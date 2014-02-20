@@ -50,15 +50,13 @@ describe 'SiteGenerator' do
   end
 
   describe '#generate_pages!' do
-    before(:all) do
-      site_generator.generate_pages!
-    end
-
     it 'creates an html page for each movie in the _site/movies directory' do
+      site_generator.generate_pages!
       expect(Dir.entries('_site/movies').reject{|e| e.start_with?('.')}.size).to eq(25)
     end
 
     it 'makes html pages that follow a specific layout' do
+      site_generator.generate_pages!
       the_matrix = File.read('_site/movies/the_matrix.html')
       comparison = File.read('spec/fixtures/the_matrix.html')
       expect(the_matrix).to eq(comparison)
@@ -67,6 +65,7 @@ describe 'SiteGenerator' do
     it 'uses ERB' do
       expect(ERB).to receive(:new)
       expect_any_instance_of(ERB).to receive(:result)
+      site_generator.generate_pages!
     end
   end
 end
