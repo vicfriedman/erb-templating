@@ -139,6 +139,7 @@ describe 'Movie' do
 
   describe '::recent' do
     before(:all) do
+      Movie.reset_movies!
       Movie.make_movies!
     end
     it 'returns movies released during or after 2012' do
