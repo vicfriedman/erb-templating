@@ -35,6 +35,13 @@ describe 'SiteGenerator' do
     Movie.make_movies!
   end
 
+  after do
+    File.open('_site/index.html', 'w') do |f|
+      f.write('')
+      f.close
+    end
+  end
+
   describe '#make_index!' do
     it 'creates index.html in the _site directory' do
       site_generator.make_index!
