@@ -15,6 +15,10 @@ class Movie
     MOVIES
   end
 
+  def self.recent
+    self.all.select {|movie| movie.release_date >= 2012}
+  end
+
   def self.reset_movies!
     self.all.clear
   end
