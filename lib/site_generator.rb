@@ -31,8 +31,8 @@ HTML
     template = ERB.new(File.open('lib/templates/movie.html.erb').read)
     movies = Movie.all
     movies.each do |movie|
-      @movie = movie
-      File.open("_site/movies/#{@movie.title.downcase.gsub(' ','_')}.html", "w+") do |f|
+      # @movie = movie
+      File.open("_site/movies/#{movie.url}", "w+") do |f|
         f << template.result(binding)
         f.close
       end
