@@ -27,4 +27,7 @@ HTML
     end
   end
 
+  def generate_pages!
+  end
+
 end
