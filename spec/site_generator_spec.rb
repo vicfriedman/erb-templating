@@ -5,6 +5,8 @@ describe 'SiteGenerator' do
 
   describe '#make_index!' do
     it 'creates index.html in the _site directory' do
+      Movie.reset_movies!
+      Movie.make_movies!
       site_generator.make_index!
       comparison = File.read('spec/fixtures/index.html')
       index = File.read('_site/index.html')
