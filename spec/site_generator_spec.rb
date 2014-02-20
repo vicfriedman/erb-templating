@@ -50,6 +50,10 @@ describe 'SiteGenerator' do
   end
 
   describe '#generate_pages!' do
+    after do
+      FileUtils.rm(Dir.glob('_site/movies/*.html'))
+    end
+
     it 'creates an html page for each movie in the _site/movies directory' do
       site_generator.generate_pages!
       expect(Dir.entries('_site/movies').reject{|e| e.start_with?('.')}.size).to eq(25)
