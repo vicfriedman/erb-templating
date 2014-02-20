@@ -8,5 +8,12 @@
     <h3>Release Date: <%= @movie.release_date %></h3>
     <h4><em>Director: <%= @movie.director %></em></h4>
     <p><%= @movie.summary %></p>
+    <br />
+    <h2>Other Movies</h2>
+    <ul>
+    <% movies.each do |movie| %>
+      <li><a href='<%= movie.url %>'><%= movie.title %></a></li>
+    <% end %>
+    </ul>
   </body>
 </html>

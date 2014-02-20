@@ -28,9 +28,9 @@ HTML
   end
 
   def generate_pages!
-    template = ERB.new(File.open('lib/templates/movie.erb').read)
-
-    Movie.all.each do |movie|
+    template = ERB.new(File.open('lib/templates/movie.html.erb').read)
+    movies = Movie.all
+    movies.each do |movie|
       @movie = movie
       File.open("_site/movies/#{@movie.title.downcase.gsub(' ','_')}.html", "w+") do |f|
         f << template.result(binding)
