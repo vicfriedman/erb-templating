@@ -5,7 +5,7 @@ describe 'Movie' do
   let(:release_date) { 1999 }
   let(:director) { 'The Wachowski Brothers' }
   let(:summary) { 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.' }
-  let(:movie) { Movie.new(title, release_date, director, summary) }
+  let(:the_matrix) { Movie.new(title, release_date, director, summary) }
   let(:titles) {[
     "The Matrix",
     "The Lego Movie",
@@ -78,19 +78,25 @@ describe 'Movie' do
 
   context 'attributes' do
     it 'has a title' do
-      expect(movie.title).to eq(title)
+      expect(the_matrix.title).to eq(title)
     end
 
     it 'has a release date' do
-      expect(movie.release_date).to eq(release_date)
+      expect(the_matrix.release_date).to eq(release_date)
     end
 
     it 'has a director' do
-      expect(movie.director).to eq(director)
+      expect(the_matrix.director).to eq(director)
     end
 
     it 'has a summary' do
-      expect(movie.summary).to eq(summary)
+      expect(the_matrix.summary).to eq(summary)
+    end
+  end
+
+  describe '#url' do
+    it 'gives a url-friendly version of the title with the .html extension' do
+      expect(the_matrix.url).to eq('the_matrix.html')
     end
   end
 
