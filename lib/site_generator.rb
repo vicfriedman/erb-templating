@@ -12,9 +12,9 @@ class SiteGenerator
     <ul>
 HTML
     movies[0..-2].each do |movie|
-      html << "      <li><a href='movies/#{movie.url}'>#{movie.title}</a></li>\n"
+      html << "      <li><a href=\"movies/#{movie.url}\">#{movie.title}</a></li>\n"
     end
-    html << "      <li><a href='movies/#{movies.last.url}'>#{movies.last.title}</a></li>"
+    html << "      <li><a href=\"movies/#{movies.last.url}\">#{movies.last.title}</a></li>"
     html << <<-HTML
 
     </ul>
