@@ -125,15 +125,15 @@ describe 'Movie' do
     end
 
     it 'correctly assigns titles' do
-      expect(Movie.all).map {|movie| movie.title}.to match_array(titles)
+      expect(Movie.all.map {|movie| movie.title}).to match_array(titles)
     end
 
     it 'correctly assigns release dates' do
-      expect(Movie.all).map {|movie| movie.release_date}.to match_array(release_dates)
+      expect(Movie.all.map {|movie| movie.release_date}).to match_array(release_dates)
     end
 
     it 'correctly assigns directors' do
-      expect(Movie.all).map {|movie| movie.director}.to match_array(directors)
+      expect(Movie.all.map {|movie| movie.director}).to match_array(directors)
     end
   end
 
