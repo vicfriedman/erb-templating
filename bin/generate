@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require_relative '../config/environment'
+
+Movie.make_movies!
+site_generator = SiteGenerator.new
+site_generator.make_index!
+site_generator.generate_pages!
