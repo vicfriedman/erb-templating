@@ -61,14 +61,13 @@ describe 'SiteGenerator' do
 
     it 'makes html pages that follow a specific layout' do
       site_generator.generate_pages!
-      the_matrix = File.read('_site/movies/the_matrix.html')
-      comparison = File.read('spec/fixtures/the_matrix.html')
+      the_matrix = File.read('_site/movies/the_matrix.html').gsub("\n",'').gsub(' ','')
+      comparison = File.read('spec/fixtures/the_matrix.html').gsub("\n",'').gsub(' ','')
       expect(the_matrix).to eq(comparison)
     end
 
     it 'uses ERB' do
-      expect(ERB).to receive(:new)
-      expect_any_instance_of(ERB).to receive(:result)
+      expect_any_instance_of(ERB).to receive(:result).at_least(25).times
       site_generator.generate_pages!
     end
   end
