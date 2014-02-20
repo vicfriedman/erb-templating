@@ -11,6 +11,10 @@ class Movie
     self.class.all << self
   end
 
+  def url
+    "#{title.downcase.gsub(' ', '_')}.html"
+  end
+
   def self.all
     MOVIES
   end
@@ -31,7 +35,7 @@ class Movie
         title: split_line[0],
         release_date: split_line[1].to_i,
         director: split_line[2],
-        summary: split_line[3]
+        summary: split_line[3].chomp
       }
     end
   end

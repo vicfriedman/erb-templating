@@ -12,9 +12,9 @@ class SiteGenerator
     <ul>
 HTML
     movies[0..-2].each do |movie|
-      html << "      <li><a href='movies/#{movie.title.downcase.gsub(' ','_')}.html'>#{movie.title}</a></li>\n"
+      html << "      <li><a href='movies/#{movie.url}'>#{movie.title}</a></li>\n"
     end
-    html << "      <li><a href='movies/#{movies.last.title.downcase.gsub(' ','_')}.html'>#{movies.last.title}</a></li>"
+    html << "      <li><a href='movies/#{movies.last.url}'>#{movies.last.title}</a></li>"
     html << <<-HTML
 
     </ul>
@@ -28,6 +28,15 @@ HTML
   end
 
   def generate_pages!
+    template = ERB.new(File.open('lib/templates/movie.erb').read)
+
+    Movie.all.each do |movie|
+      @movie = movie
+      File.open("_site/movies/#{@movie.title.downcase.gsub(' ','_')}.html", "w+") do |f|
+        f << template.result(binding)
+        f.close
+      end
+    end
   end
 
 end
