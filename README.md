@@ -1,6 +1,7 @@
 ---
-tags: erb
-languages: ruby
+  tags: erb, introduction
+  languages: ruby
+  resources: 2
 ---
 
 # Templating with ERB
@@ -36,3 +37,7 @@ template.result(binding)
 ### Generate the Site!
 
 Once you've passed all of the specs, your site generator should work. Run `bin/generate` from your command line and then `open _site/index.html` to check it out.
+
+## Resources
+* [Rasmus Ron Nielsen's Blog](http://rrn.dk/) - [Ruby's ERB Templating System: How Does It Work?](http://rrn.dk/rubys-erb-templating-system)
+* [Ruby Docs](http://www.ruby-doc.org/) - [Class: ERB](http://www.ruby-doc.org/stdlib-2.1.1/libdoc/erb/rdoc/ERB.html)
