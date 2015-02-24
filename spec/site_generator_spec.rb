@@ -43,11 +43,17 @@ describe 'SiteGenerator' do
   end
 
   describe '#make_index!' do
+    def strip_heredoc(original_string)
+      String.new.tap do |stripped|
+        original_string.each_line { |line| stripped << line.strip }
+      end
+    end
+
     it 'creates index.html in the _site directory' do
       site_generator.make_index!
       comparison = File.read('spec/fixtures/index.html')
       index = File.read('_site/index.html')
-      expect(index).to eq(comparison)
+      expect(strip_heredoc(index)).to eq(strip_heredoc(comparison))
     end
 
     it 'does NOT use erb' do
